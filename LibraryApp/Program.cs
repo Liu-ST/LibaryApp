@@ -8,7 +8,7 @@ namespace LibraryApp
         {
             var myAccount = new Account();
             myAccount.AccountNumber = 00001;
-            myAccount.AccountName = "Shitian's Libary Account";
+            myAccount.AccountName = "Libary Account";
       
             var myAccount2 = new Account();
 
