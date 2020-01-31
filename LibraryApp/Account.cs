@@ -4,26 +4,44 @@ using System.Text;
 
 namespace LibraryApp
 {
+    /// <summary>
+    /// This class represents a library account
+    /// where you can borrow and returen books from
+    /// </summary>
     class Account
     {
-        public int AccountNumber { get; set; }
-        public string AccountName { get; set; }       
-        public int NumberOfBooks { get; }
+        #region Properties
+        public int AccountNumber { get; private set; }
+        public string AccountName { get; set; }
+        public int Balance { get; private set; }
         public DateTime CreatedDate { get; set; }
         public string EmailAddress { get; set; }
+        #endregion
 
+        #region Methods
+        /// <summary>
+        /// Add how many books you borrowed
+        /// </summary>
+        /// <param name="amount">Amount borrowed</param>
+        /// <returns>New balance</returns>
         public int Borrow(int amount)
         {
-            NumberOfBooks += amount;
-            return NumberOfBooks;
+            Balance += amount;
+            return Balance;
         }
 
+        /// <summary>
+        /// Minus how many books you returned
+        /// </summary>
+        /// <param name="amount">Amount to return</param>
+        /// <returns>New balance</returns>
         public int Return(int amount)
         {
-            NumberOfBooks -= amount;
-            return NumberOfBooks;
+            Balance -= amount;
+            return Balance;
         }
-        
+        #endregion
+
     }
 
 
