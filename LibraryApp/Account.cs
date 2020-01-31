@@ -7,9 +7,10 @@ namespace LibraryApp
     class Account
     {
         public int AccountNumber { get; set; }
-        public string AccountName { get; set; }
-        public string EmailAddress { get; set; }
+        public string AccountName { get; set; }       
         public int NumberOfBooks { get; }
+        public DateTime CreatedDate { get; set; }
+        public string EmailAddress { get; set; }
 
         public int Borrow(int amount)
         {
