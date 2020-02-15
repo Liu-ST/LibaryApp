@@ -4,7 +4,7 @@ using System.Text;
 
 namespace LibraryApp
 {
-    enum TypeofAccounts
+    enum TypeOfAccounts
     {
         OneDay,
         OneMonth,
@@ -22,7 +22,7 @@ namespace LibraryApp
         public int AccountNumber { get; private set; }
         public string AccountName { get; set; }
         public int Balance { get; private set; }
-        public TypeofAccounts AccountType { get; set; }
+        public TypeOfAccounts AccountType { get; set; }
         public DateTime CreatedDate { get; private set; }
         public string EmailAddress { get; set; }
         #endregion
