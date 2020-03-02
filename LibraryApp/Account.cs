@@ -33,10 +33,9 @@ namespace LibraryApp
         /// </summary>
         /// <param name="amount">Amount borrowed</param>
         /// <returns>New balance</returns>
-        public int Borrow(int amount)
+        public void Borrow(int amount)
         {
             Balance += amount;
-            return Balance;
         }
 
         /// <summary>
@@ -44,10 +43,9 @@ namespace LibraryApp
         /// </summary>
         /// <param name="amount">Amount to return</param>
         /// <returns>New balance</returns>
-        public int Return(int amount)
+        public void Return(int amount)
         {
             Balance -= amount;
-            return Balance;
         }
         #endregion
 

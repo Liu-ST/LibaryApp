@@ -49,12 +49,41 @@ namespace LibraryApp
                         var myAccount = Library.CreateAccount(accountName, emailAddress, accountType, amount);
                         Console.WriteLine($"AN:{myAccount.AccountNumber},email Address:{myAccount.EmailAddress}, AccountName:{myAccount.AccountName}, B:{myAccount.Balance}, CD:{myAccount.CreatedDate}, AT:{myAccount.AccountType}");
                         break;
+
                     case "2":
+                        PrintAllAccounts();
+                        Console.Write("Account Number:");
+                        var accountNumber = Convert.ToInt32(Console.ReadLine());
+                        Console.Write("Amount to borrow:");
+                        var borrowAmount = Convert.ToInt32(Console.ReadLine());
+                        Library.Borrow(accountNumber, borrowAmount);
+                        Console.WriteLine("Borrow completed successfully!");
+                        break;
+
                     case "3":
+                        PrintAllAccounts();
+                        Console.Write("Account Number:");
+                        accountNumber = Convert.ToInt32(Console.ReadLine());
+                        Console.Write("Amount to return:");
+                        var returnAmount = Convert.ToInt32(Console.ReadLine());
+                        Library.Borrow(accountNumber, returnAmount);
+                        Console.WriteLine("Return completed successfully!");
+                        break;
+
                     case "4":
                         PrintAllAccounts();
                         break;
+
                     case "5":
+                        PrintAllAccounts();
+                        Console.Write("Account Number: ");
+                        accountNumber = Convert.ToInt32(Console.ReadLine());
+                        var transactions = Library.GetTransactionsByAccountNumber(accountNumber);
+                        foreach(var transaction in transactions)
+                        {
+                            Console.WriteLine($"TT:{transaction.TransactionType}, TD:{transaction.TransactionDate}, TA:{transaction.Amount}, AN:{transaction.AccountNumber}, D:{transaction.Description}");
+                        }
+                        break;
                     default:
                         Console.WriteLine("Invalid option - try again!");
                         break;
