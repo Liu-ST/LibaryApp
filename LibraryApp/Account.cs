@@ -19,11 +19,11 @@ namespace LibraryApp
         private static int lastAccountNumber = 0;
 
         #region Properties
-        public int AccountNumber { get; private set; }
+        public int AccountNumber { get; set; }
         public string AccountName { get; set; }
-        public int Balance { get; private set; }
+        public int Balance { get;  set; }
         public TypeOfAccounts AccountType { get; set; }
-        public DateTime CreatedDate { get; private set; }
+        public DateTime CreatedDate { get;  set; }
         public string EmailAddress { get; set; }
         #endregion
 
@@ -53,7 +53,8 @@ namespace LibraryApp
         //Default constructor
         public Account()
         {
-           AccountNumber = ++ lastAccountNumber;
+            //AccountNumber = ++ lastAccountNumber;
+
             CreatedDate = DateTime.UtcNow;
         }
 
