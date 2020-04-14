@@ -16,7 +16,8 @@ namespace LibraryApp
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Account>(e => {
+            modelBuilder.Entity<Account>(e =>
+            {
                 e.ToTable("Accounts");
 
                 e.HasKey(a => a.AccountNumber)
@@ -27,7 +28,42 @@ namespace LibraryApp
 
                 e.Property(a => a.EmailAddress)
                     .HasMaxLength(100)
-            })                    
+                    .IsRequired();
+
+                e.Property(a => a.Balance)
+                    .IsRequired();
+
+                e.Property(a => a.AccountType)
+                    .IsRequired();
+
+                e.Property(a => a.AccountName)
+                    .HasMaxLength(100)
+                    .IsRequired();
+
+
+            });
+
+            modelBuilder.Entity<Transaction>(e =>
+            {
+                e.ToTable("Transactions");
+                e.HasKey(t => t.TransactionId)
+                    .HasName("PK_Transactions");
+
+                e.Property(t => t.TransactionId)
+                    .ValueGeneratedOnAdd();
+                e.Property(t => t.TransactionType)
+                    .IsRequired();
+                e.Property(t => t.Amount)
+                    .IsRequired();
+
+                e.Property(t => t.TransactionDate)
+                    .IsRequired();
+
+                e.HasOne(t => t.Account)
+                    .WithMany()
+                    .HasForeignKey(t => t.AccountNumber);
+            });
+
         }
     }
 }

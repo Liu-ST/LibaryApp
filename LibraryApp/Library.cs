@@ -7,9 +7,7 @@ namespace LibraryApp
 {
     static class Library
     {
-        private static List<Account> accounts = new List<Account>();
-        private static List<Transaction> transactions = new List<Transaction>();
-
+        private static LibraryContext db = new LibraryContext();
         /// <summary>
         /// Create a library account
         /// </summary>
@@ -27,7 +25,9 @@ namespace LibraryApp
                 AccountType = accountType
             };
                         
-            accounts.Add(account);
+            db.Accounts.Add(account);
+            db.SaveChanges();
+
             if (initialBorrowNumber > 0)
             {
                 Borrow(account.AccountNumber, initialBorrowNumber);
@@ -38,12 +38,12 @@ namespace LibraryApp
 
         public static IEnumerable<Account> GetAccountsByEmailAddress(string emailAddress)
         {
-            return accounts.Where(a => a.EmailAddress == emailAddress);
+            return db.Accounts.Where(a => a.EmailAddress == emailAddress);
         }
 
         public static void Borrow(int accountNumber, int amount)
         {
-            var account = accounts.SingleOrDefault(a => a.AccountNumber == accountNumber);
+            var account = db.Accounts.SingleOrDefault(a => a.AccountNumber == accountNumber);
             if (account == null)
             {
                 //throw exception
@@ -58,12 +58,13 @@ namespace LibraryApp
                 Amount = amount,
                 AccountNumber = accountNumber
             };
-            transactions.Add(transaction);
+            db.Transactions.Add(transaction);
+            db.SaveChanges();
         }
 
         public static void Return(int accountNumber, int amount)
         {
-            var account = accounts.SingleOrDefault(a => a.AccountNumber == accountNumber);
+            var account = db.Accounts.SingleOrDefault(a => a.AccountNumber == accountNumber);
             if (account == null)
             {
                 //throw exception
@@ -78,12 +79,13 @@ namespace LibraryApp
                 Amount = amount,
                 AccountNumber = accountNumber
             };
-            transactions.Add(transaction);
+            db.Transactions.Add(transaction);
+            db.SaveChanges();
         }
 
         public static IEnumerable<Transaction> GetTransactionsByAccountNumber(int accountNumber)
         {
-            return transactions.Where(t => t.AccountNumber == accountNumber).OrderByDescending(t => t.TransactionDate);
+            return db.Transactions.Where(t => t.AccountNumber == accountNumber).OrderByDescending(t => t.TransactionDate);
         }
     }
 }
