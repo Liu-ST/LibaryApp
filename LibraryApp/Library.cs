@@ -16,8 +16,14 @@ namespace LibraryApp
         /// <param name="accountType">type of your account</param>
         /// <param name="initialBorrowNumber">initial number </param>
         /// <returns>Newly created account</returns>
+        /// <exception cref="ArgumentException"/>
+        /// <exception cref="ArgumentNullException"/>
         public static Account CreateAccount(string accountName, string emailAddress, TypeOfAccounts accountType = TypeOfAccounts.OneDay, int initialBorrowNumber = 0)
         {
+            if(string.IsNullOrEmpty(accountName)|| string.IsNullOrEmpty(emailAddress))
+            {
+                throw new ArgumentException("Account name and Email Address are required!");
+            }
             var account = new Account
             {
                 AccountName = accountName,
