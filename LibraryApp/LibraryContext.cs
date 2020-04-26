@@ -5,10 +5,19 @@ using System.Text;
 
 namespace LibraryApp
 {
-    class LibraryContext: DbContext 
+    public class LibraryContext: DbContext 
     {
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
+
+        public LibraryContext()
+        {
+
+        }
+        public LibraryContext(DbContextOptions<LibraryContext> options) : base(options)
+        {
+
+        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = LibraryDb; Integrated Security = True; Connect Timeout = 30;");

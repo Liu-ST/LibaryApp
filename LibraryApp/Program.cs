@@ -45,7 +45,7 @@ namespace LibraryApp
                             //    throw new ArgumentNullException("Email address", "Email address is required!");
                             //}
                             Console.Write("Initial number of books to borrow: ");
-                            var amount = Convert.ToInt32(Console.ReadLine());
+                            var amount = Convert.ToInt32(Console.ReadLine());  
                             Console.WriteLine("Account type: ");
                             var accountTypes = Enum.GetNames(typeof(TypeOfAccounts));
                             for (int i = 0; i < accountTypes.Length; i++)

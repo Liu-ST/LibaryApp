@@ -4,7 +4,7 @@ using System.Text;
 
 namespace LibraryApp
 {
-    enum TypeOfAccounts
+    public enum TypeOfAccounts
     {
         OneDay,
         OneMonth,
@@ -14,7 +14,7 @@ namespace LibraryApp
     /// This class represents a library account
     /// where you can borrow and returen books from
     /// </summary>
-    class Account
+    public class Account
     {
         private static int lastAccountNumber = 0;
 

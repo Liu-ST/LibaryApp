@@ -5,7 +5,7 @@ using System.Text;
 
 namespace LibraryApp
 {
-    static class Library
+    public static class Library
     {
         private static LibraryContext db = new LibraryContext();
         /// <summary>
